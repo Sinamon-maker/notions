@@ -18,7 +18,7 @@ export const ListItem = ({title}: ItemProps) => {
         titleStyle="text-slate-50 text-lg"
       />
 
-      <IconComponent name={IconsNames.DELETE} color="white" size={20} />
+      <IconComponent icon={IconsNames.DELETE} color="white" size={20} />
     </View>
   );
 };

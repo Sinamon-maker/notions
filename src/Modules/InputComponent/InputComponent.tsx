@@ -8,15 +8,15 @@ interface Props extends ViewProps {
   background?: string;
 }
 
-type CombinedProps = Partial<IconProps> & TextInputProps & Props;
+export type InputComponentProps = Partial<IconProps> & TextInputProps & Props;
 
 export const InputComponent = ({
   background = 'transparent',
-  name,
+  icon,
   errorProp = false,
   width = '100%',
   ...input
-}: CombinedProps) => {
+}: InputComponentProps) => {
   const style =
     'w-full flex flex-row items-center px-2 py-1 border border-slate-50  rounded-lg mb-1';
   const errorStyle = 'border-red-600';
@@ -25,7 +25,7 @@ export const InputComponent = ({
     : `${style} ${background}`;
   return (
     <View className={resultStyle} style={{width}}>
-      {name && <IconComponent name={name} {...input} />}
+      {icon && <IconComponent icon={icon} {...input} />}
       <TextInput
         className="flex-1 pb-2 px-2  text-lg  text-slate-600 "
         value=""

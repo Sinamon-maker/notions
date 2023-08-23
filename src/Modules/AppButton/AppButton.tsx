@@ -17,11 +17,11 @@ export const AppButton = ({
   title,
   className = 'bg-blue-600 rounded p-2',
   titleStyle = 'text-slate-50',
-  name,
+  icon,
   ...props
 }: CombinedProps) => (
   <TouchableOpacity onPress={onPress} className={className} {...props}>
-    {name && <IconComponent name={name} {...props} />}
+    {icon && <IconComponent icon={icon} {...props} />}
     {title && <Text className={titleStyle}>{title}</Text>}
   </TouchableOpacity>
 );

@@ -15,7 +15,7 @@ export enum IconsNames {
 }
 
 export interface IconProps {
-  name: IconsNames;
+  icon: IconsNames;
   size?: number;
   color?: string;
 }

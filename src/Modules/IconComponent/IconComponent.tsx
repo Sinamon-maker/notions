@@ -2,14 +2,10 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {IconProps} from '../../../globalTypes';
 
-interface Props {
-  icon: IconProps;
-}
-
-export const IconComponent = ({name, size, color}: IconProps) => {
+export const IconComponent = ({icon, size, color}: IconProps) => {
   return (
     <Icon
-      name={name}
+      name={icon}
       size={size ? size : 30}
       color={color ? color : '#F8FAFC'}
     />

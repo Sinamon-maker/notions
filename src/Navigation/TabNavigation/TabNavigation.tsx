@@ -23,7 +23,7 @@ export function TabNavigator() {
           tabBarActiveTintColor: '#f8fafc',
 
           tabBarIcon: ({color}) => (
-            <IconComponent name={IconsNames.FOLDER} color={color} />
+            <IconComponent icon={IconsNames.FOLDER} color={color} />
           ),
         }}
         name="Catalogue"
@@ -37,7 +37,7 @@ export function TabNavigator() {
           tabBarInactiveTintColor: 'gray',
           tabBarActiveTintColor: '#f8fafc',
           tabBarIcon: ({color}) => (
-            <IconComponent name={IconsNames.TASKS} color={color} />
+            <IconComponent icon={IconsNames.TASKS} color={color} />
           ),
         }}
         name="TasksList"
