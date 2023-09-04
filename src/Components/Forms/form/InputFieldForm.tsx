@@ -1,3 +1,4 @@
+import React from 'react';
 import {useFormikContext} from 'formik';
 import {InputComponent} from '../../../Modules/InputComponent/InputComponent';
 import {IconsNames} from '../../../../globalTypes';
@@ -26,7 +27,7 @@ export const InputFieldForm = <T extends {[key: string]: string}>(
       />
 
       {errors[name] && touched[name] && (
-        <ErrorComponent key={err} message={err} />
+        <ErrorComponent message={errors[name] as string} />
       )}
     </FormFieldWrapper>
   );

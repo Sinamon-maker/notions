@@ -1,5 +1,6 @@
+import React, {ReactNode} from 'react';
 import {Formik, FormikValues, FormikConfig} from 'formik';
-import {ReactNode} from 'react';
+
 import * as Yup from 'yup';
 
 type FormData<T extends Yup.Maybe<Yup.AnyObject>> = FormikConfig<T> & {

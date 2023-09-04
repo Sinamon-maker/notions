@@ -1,3 +1,4 @@
+import React from 'react';
 import {TextInput, TextInputProps, View, ViewProps} from 'react-native';
 import {IconComponent} from '../IconComponent/IconComponent';
 import {IconProps} from '../../../globalTypes';
@@ -28,7 +29,6 @@ export const InputComponent = ({
       {icon && <IconComponent icon={icon} {...input} />}
       <TextInput
         className="flex-1 pb-2 px-2  text-lg  text-slate-600 "
-        value=""
         placeholderTextColor={'#94a3b8'}
         {...input}
       />
