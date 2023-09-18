@@ -1,4 +1,4 @@
-import {AddNewItemComponent} from '../../../Modules/AddNewItemComponent/AddNewItemComponent';
+import {AddNewItemComponent} from '../../../Modules/AddNewItemComponent';
 
 export const NewTask = () => {
   return <AddNewItemComponent />;

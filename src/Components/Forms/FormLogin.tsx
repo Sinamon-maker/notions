@@ -6,10 +6,11 @@ import {SubmitFieldForm} from './form/SubmitFieldForm';
 import {userLoginSchema} from './schema/loginSchema';
 import useLogin from '../../api/useLogin';
 import {FormikValues} from 'formik';
+import {ErrorComponent} from '../../Modules/ErrorComponent';
 
 export const FormLogin = () => {
-  const {error, login} = useLogin();
-  console.log('err login', error);
+  const {err, login, loading} = useLogin();
+
   const submit = (values: FormikValues) => {
     console.log('hjhj');
     const res = login(values.email, values.password);
@@ -46,8 +47,8 @@ export const FormLogin = () => {
         color="#fb923c"
         name="password"
       />
-
-      <SubmitFieldForm title="Login" />
+      <ErrorComponent message={err} />
+      <SubmitFieldForm title="Login" loading={loading} />
     </AppForm>
   );
 };

@@ -14,9 +14,12 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
+import {Folder} from '../../globalTypes';
 
-export type StackParamList = {
+export type StackMainParamList = {
   Main: undefined;
+  EditFolder: Folder;
+  CreateFolder: undefined;
 };
 
 export type StackTasksList = {
@@ -31,7 +34,7 @@ export type AuthStackParamList = {
 
 export type TabParamList = {
   TasksList: NavigatorScreenParams<StackTasksList>;
-  Catalogue: NavigatorScreenParams<StackParamList>;
+  Catalogue: NavigatorScreenParams<StackMainParamList>;
 };
 
 export type ProfileScreenNavigationProps = CompositeNavigationProp<
@@ -57,8 +60,20 @@ export type PropsNavigationTasksEdit = NativeStackScreenProps<
 >;
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<
-  StackParamList,
+  StackMainParamList,
   'Main'
 >;
-// for route params
+// for only route params
 export type TasksScreenRouteProp = RouteProp<TabParamList, 'TasksList'>;
+//export type MainScreenRouteProp = RouteProp<StackMainParamList, 'Main'>;
+
+//for navigation and route params
+
+export type MainProps = NativeStackScreenProps<StackMainParamList, 'Main'>;
+
+export type MainScreenNavigationProp = MainProps['navigation'];
+export type MainScreenRouteProp = MainProps['route'];
+
+export type TasksProps = NativeStackScreenProps<StackTasksList, 'Tasks'>;
+
+export type TasksScreenNavigationProp = TasksProps['navigation'];

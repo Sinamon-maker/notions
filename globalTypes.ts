@@ -1,4 +1,5 @@
 export enum IconsNames {
+  FOLDER_OUTLINED = 'folder-outline',
   FOLDER = 'folder',
   OPENFOLDER = 'folder-open',
   EDIT = 'pencil-outline',
@@ -12,6 +13,7 @@ export enum IconsNames {
   EMAIL = 'email-outline',
   LOCK = 'lock-outline',
   ACCOUNT = 'account-outline',
+  CHECK = 'check',
 }
 
 export interface IconProps {
@@ -25,4 +27,27 @@ export interface Task {
   status: boolean;
   created: number;
   detailes?: string;
+}
+
+export type Folder = {
+  name: string;
+  id: string;
+  userId: string;
+  createdAt: number;
+};
+
+export enum SortParam {
+  all = 'All',
+  done = 'Done',
+  ongoing = 'Ongoing',
+}
+
+export interface Data {
+  title: string;
+  id: string;
+  createdAt: number;
+  userId: string;
+  tasks: Array<Task>;
+  displayName: string;
+  folder: string;
 }

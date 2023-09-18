@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import {AppButton} from '../../../Modules/AppButton/AppButton';
+import {AppButton} from '../../../Modules/AppButton';
 
 export type ItemProps = {title: string};
 

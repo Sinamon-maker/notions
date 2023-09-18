@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
 import {Task, IconsNames} from '../../../../globalTypes';
-import {AppButton} from '../../../Modules/AppButton/AppButton';
+import {AppButton} from '../../../Modules/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import {PropsToEditTask} from '../../../Navigation/types';
 
@@ -33,19 +33,19 @@ export const TasksItem = ({task}: Props) => {
       </View>
       <View className="flex flex-row items-center bg-green-200">
         <AppButton
-          name={IconsNames.UNFOLD}
+          icon={IconsNames.UNFOLD}
           size={16}
           onPress={() => console.log('editTask')}
           className=" flex justify-center items-center w-8 h-8 ml-2"
         />
         <AppButton
-          name={IconsNames.EDIT}
+          icon={IconsNames.EDIT}
           size={18}
           onPress={() => navigation.navigate('TasksEdit')}
           className=" flex justify-center items-center w-8 h-8 ml-2"
         />
         <AppButton
-          name={IconsNames.DELETE}
+          icon={IconsNames.DELETE}
           size={18}
           onPress={() => console.log('editTask')}
           className="flex justify-center items-center w-8 h-8 ml-2"

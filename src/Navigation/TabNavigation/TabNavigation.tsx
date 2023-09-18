@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainNavigator} from '../StackNavigation/MainNavigator';
 import {TasksNavigator} from '../StackNavigation/TasksNavigator';
-import {IconComponent} from '../../Modules/IconComponent/IconComponent';
+import {IconComponent} from '../../Modules/IconComponent';
 import {IconsNames} from '../../../globalTypes';
 
 import {TabParamList} from '../types';

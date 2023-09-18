@@ -1,6 +1,7 @@
+import React from 'react';
 import {FlatList, View} from 'react-native';
 import {TasksItem} from '../TasksItem/TasksItem';
-import {Separator} from '../../../Modules/Separator/Separator';
+import {Separator} from '../../../Modules/Separator';
 
 const DATA = [
   {
@@ -52,12 +53,14 @@ const DATA = [
 
 export const TasksList = () => {
   return (
-    <FlatList
-      style={{borderRadius: 6}}
-      data={DATA}
-      renderItem={({item}) => <TasksItem task={item} />}
-      keyExtractor={item => item.created}
-      ItemSeparatorComponent={Separator}
-    />
+    <View className="grow">
+      <FlatList
+        style={{borderRadius: 6}}
+        data={DATA}
+        renderItem={({item}) => <TasksItem task={item} />}
+        keyExtractor={item => item.created}
+        ItemSeparatorComponent={Separator}
+      />
+    </View>
   );
 };

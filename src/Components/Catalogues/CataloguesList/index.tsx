@@ -1,0 +1,1 @@
+export {CataloguesList} from './CataloguesList';

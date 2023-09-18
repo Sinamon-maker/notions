@@ -1,7 +1,8 @@
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {TasksScreen} from '../../Screens/TasksScreen';
-import {StackParamList, StackTasksList} from '../types';
-import {TasksEditScreen} from '../../Screens/TasksEditScreen';
+import {TasksScreen} from '../../Screens/tasks/TasksScreen';
+import {StackTasksList} from '../types';
+import {TasksEditScreen} from '../../Screens/tasks/TasksEditScreen';
 
 const Stack = createNativeStackNavigator<StackTasksList>();
 

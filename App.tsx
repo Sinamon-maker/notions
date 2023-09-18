@@ -5,30 +5,44 @@
  * @format
  */
 
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MainScreen} from './src/Screens/MainScreen';
+import {MainScreen} from './src/Screens/catalogue/MainScreen';
 import {TabNavigator} from './src/Navigation/TabNavigation/TabNavigation';
 import type {PropsWithChildren} from 'react';
 import {AuthNavigator} from './src/Navigation/StackNavigation/AuthNavigation';
 import {useColorScheme} from 'react-native';
 import navigationTheme from './src/Navigation/Theme';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import userStore from './src/store/auth/userStore';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function App() {
+  const setUser = userStore(s => s.setUser);
+  const user = userStore(s => s.user);
+  const [initializing, setInitializing] = useState(true);
+  // const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
-  const isLogged = false;
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(userState => {
+      console.log('init', userState);
+      setUser(userState);
+      if (initializing) {
+        setInitializing(false);
+      }
+    });
+    return subscriber; // unsubscribe on unmount
+  }, [initializing, setUser]);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  if (initializing) {
+    return null;
+  }
 
   return (
     <NavigationContainer theme={navigationTheme}>
-      {isLogged ? <TabNavigator /> : <AuthNavigator />}
+      {user ? <TabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
