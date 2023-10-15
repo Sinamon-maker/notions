@@ -11,7 +11,7 @@ export const TasksNavigator = () => {
     <Stack.Navigator>
       <Stack.Screen
         options={{headerShown: false}}
-        name="Tasks"
+        name="TasksList"
         component={TasksScreen}
       />
       <Stack.Screen name="TasksEdit" component={TasksEditScreen} />

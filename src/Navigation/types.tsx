@@ -23,7 +23,7 @@ export type StackMainParamList = {
 };
 
 export type StackTasksList = {
-  Tasks: undefined;
+  TasksList: undefined;
   TasksEdit: undefined;
 };
 export type AuthStackParamList = {
@@ -33,7 +33,7 @@ export type AuthStackParamList = {
 };
 
 export type TabParamList = {
-  TasksList: NavigatorScreenParams<StackTasksList>;
+  Tasks: NavigatorScreenParams<StackTasksList>;
   Catalogue: NavigatorScreenParams<StackMainParamList>;
 };
 
@@ -49,7 +49,7 @@ export type PropsWelcome = NativeStackScreenProps<
 
 export type PropsToEditTask = NativeStackNavigationProp<
   StackTasksList,
-  'Tasks'
+  'TasksList'
 >;
 
 //use in EditTaskScreens
@@ -64,7 +64,7 @@ export type HomeScreenNavigationProp = NativeStackNavigationProp<
   'Main'
 >;
 // for only route params
-export type TasksScreenRouteProp = RouteProp<TabParamList, 'TasksList'>;
+export type TasksScreenRouteProp = RouteProp<TabParamList, 'Tasks'>;
 //export type MainScreenRouteProp = RouteProp<StackMainParamList, 'Main'>;
 
 //for navigation and route params
@@ -74,6 +74,6 @@ export type MainProps = NativeStackScreenProps<StackMainParamList, 'Main'>;
 export type MainScreenNavigationProp = MainProps['navigation'];
 export type MainScreenRouteProp = MainProps['route'];
 
-export type TasksProps = NativeStackScreenProps<StackTasksList, 'Tasks'>;
+export type TasksProps = NativeStackScreenProps<StackTasksList, 'TasksList'>;
 
 export type TasksScreenNavigationProp = TasksProps['navigation'];

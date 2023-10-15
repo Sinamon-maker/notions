@@ -22,8 +22,13 @@ export const CataloguesList = () => {
     }
     return [];
   };
+  const cataloguesInFolder = !activeFolder
+    ? []
+    : activeFolder === 'all'
+    ? catalogues
+    : catalogues?.filter(it => it.folder === activeFolder);
 
-  const filteredCatalogues = filterData(catalogues, searchQuery);
+  const filteredCatalogues = filterData(cataloguesInFolder, searchQuery);
   console.log(
     'filtered catalogue',
     filteredCatalogues,

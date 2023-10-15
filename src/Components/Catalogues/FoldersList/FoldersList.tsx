@@ -70,10 +70,10 @@ export const FoldersList = () => {
           {folders.length > 1 && (
             <AppButton
               title="All"
-              onPress={() => setActiveFolder('All')}
+              onPress={() => setActiveFolder('all')}
               className="bg-transparent rounded  shadow-md flex items-center justify-center"
               titleStyle={
-                activeFolder === 'All'
+                activeFolder === 'all'
                   ? 'text-blue-400 underline font-bold'
                   : 'text-blue-400'
               }

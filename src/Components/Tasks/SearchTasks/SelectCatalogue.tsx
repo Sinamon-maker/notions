@@ -12,8 +12,13 @@ export const SelectCatalogue = () => {
   const setActiveCatalogue = useCatalogueStore(s => s.setActiveCatalogue);
 
   const {data: catalogues} = useGetDataById<Data>('tasks', user?.uid);
-
-  const onSelect = (val: Data) => {
+  const cataloguesInFolder =
+    activeFolder === 'all'
+      ? catalogues
+      : !activeFolder
+      ? []
+      : catalogues?.filter(it => it.folder === activeFolder);
+  const onSelect = (val: Data | null) => {
     setActiveCatalogue(val);
   };
 
@@ -27,7 +32,7 @@ export const SelectCatalogue = () => {
       defaultText="Enter catalogue name"
       selected={activeCatalogue}
       onSelect={onSelect}
-      data={catalogues}
+      data={cataloguesInFolder}
       clearValueonClose={clearValueonClose}
     />
   );

@@ -14,6 +14,7 @@ interface Props extends ViewProps {
   width?: DimensionValue;
   background?: string;
   children?: ReactNode;
+  className?: string;
 }
 
 export type InputComponentProps = Partial<IconProps> & TextInputProps & Props;
@@ -22,6 +23,7 @@ export const InputComponent = forwardRef<TextInput, InputComponentProps>(
   (props, ref) => {
     const {
       background = 'transparent',
+      className,
       icon,
       errorProp = false,
       width = '100%',
@@ -39,7 +41,9 @@ export const InputComponent = forwardRef<TextInput, InputComponentProps>(
         {icon && <IconComponent icon={icon} {...input} />}
         <TextInput
           ref={ref}
-          className="flex-1 pb-2 px-2  text-lg  text-slate-600 "
+          className={
+            className ? className : 'flex-1 pb-2 px-2  text-lg  text-slate-600 '
+          }
           placeholderTextColor={'#94a3b8'}
           {...input}
         />

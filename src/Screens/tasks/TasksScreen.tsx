@@ -10,7 +10,7 @@ import {ScreenWrapper} from '../../Modules/ScreenWrapper';
 import {TasksFoldersList} from '../../Components/Tasks/TasksFolderList/TasksFolderList';
 import {SelectCatalogue} from '../../Components/Tasks/SearchTasks/SelectCatalogue';
 import {View} from 'react-native';
-import {DropdownCatalogues} from '../../Components/Tasks/SearchTasks/DropdownCatalogues';
+import {DropdownFolders} from '../../Components/Tasks/SearchTasks/DropdownFolders';
 
 export function TasksScreen(): JSX.Element {
   return (
@@ -21,10 +21,8 @@ export function TasksScreen(): JSX.Element {
         colors={['#2563eb', '#fb923c']}
         className="h-full p-2 flex">
         <View className="flex flex-col">
-          <TasksFoldersList />
+          <DropdownFolders />
           <SelectCatalogue />
-          <DropdownCatalogues />
-
           <SortingButtons />
 
           <TasksList />

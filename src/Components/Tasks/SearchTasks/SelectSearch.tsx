@@ -19,7 +19,7 @@ export type SelectProps = {
   defaultText: string;
   data: Data[] | undefined;
   selected: Data | null;
-  onSelect?: (val: Data) => void;
+  onSelect?: (val: Data | null) => void;
   clearValueonClose?: () => void;
 };
 
@@ -34,7 +34,7 @@ export const SelectSearch = ({
   const [searchQuery, setSearchQuery] = useState('');
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
 
-  const [innerSelected, setSelected] = useState('');
+  const [innerSelected, setSelected] = useState<Data | null>(null);
   const DropdownButton = useRef<TextInput>(null);
   const [dropdownTop, setDropdownTop] = useState(0);
   const [wi, setWidth] = useState(0);
@@ -71,13 +71,18 @@ export const SelectSearch = ({
     fadeIn();
     setOpened(false);
   };
+  const closeDropdownWithoutWuery = () => {
+    closeDropdown();
+    setSearchQuery('');
+  };
 
   const toggleDropdown = () => {
-    isOpened ? closeDropdown() : onOpenDropdown();
+    isOpened ? closeDropdownWithoutWuery() : onOpenDropdown();
   };
 
   const selectItem = (item: Data) => {
-    setSearchQuery(item.title);
+    setSearchQuery('');
+    setSelected(item);
     onSelect && onSelect(item);
     closeDropdown();
   };
@@ -95,7 +100,8 @@ export const SelectSearch = ({
   };
 
   const onChange = (text: string) => {
-    console.log('onChange', text);
+    setSelected(null);
+    onSelect && onSelect(null);
     setSearchQuery(text);
   };
 
@@ -112,7 +118,7 @@ export const SelectSearch = ({
           ref={DropdownButton}
           onPressClose={onPressClose}
           placeholder={defaultText}
-          searchQuery={searchQuery}
+          searchQuery={selected ? selected.title : searchQuery}
           onSetQuery={onChange}
           onTouchStart={onOpenDropdown}
           iconClose={true}
@@ -133,16 +139,25 @@ export const SelectSearch = ({
                 : styles.elevationAndroid,
             ]}>
             <ScrollView nestedScrollEnabled={true} style={styles.scrollView}>
-              {filtered.map(it => (
-                <Pressable key={it.id} onPress={() => selectItem(it)}>
-                  <View style={styles.item}>
-                    <Text style={styles.text}>{it.title}</Text>
-                    {selected && selected.id === it.id && (
-                      <IconComponent icon={IconsNames.CHECK} color="#fb923c" />
-                    )}
-                  </View>
-                </Pressable>
-              ))}
+              {filtered.length === 0 ? (
+                <View style={styles.item}>
+                  <Text style={styles.text}>nothing found</Text>
+                </View>
+              ) : (
+                filtered.map(it => (
+                  <Pressable key={it.id} onPress={() => selectItem(it)}>
+                    <View style={styles.item}>
+                      <Text style={styles.text}>{it.title}</Text>
+                      {selected && selected.id === it.id && (
+                        <IconComponent
+                          icon={IconsNames.CHECK}
+                          color="#fb923c"
+                        />
+                      )}
+                    </View>
+                  </Pressable>
+                ))
+              )}
             </ScrollView>
           </Animated.View>
         </TouchableOpacity>

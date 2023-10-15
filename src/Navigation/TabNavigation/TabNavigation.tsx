@@ -1,3 +1,4 @@
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainNavigator} from '../StackNavigation/MainNavigator';
 import {TasksNavigator} from '../StackNavigation/TasksNavigator';

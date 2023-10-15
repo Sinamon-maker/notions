@@ -11,14 +11,14 @@ import {
   Animated,
 } from 'react-native';
 
-import {Data, IconsNames} from '../../../globalTypes';
+import {Folder, IconsNames} from '../../../globalTypes';
 import {useState} from 'react';
 import {IconComponent} from '../../Modules';
 
 type DropdownProps = {
-  data: Data[] | undefined;
+  data: Folder[] | undefined;
   selected?: string;
-  onSelect?: (val: Data) => void;
+  onSelect?: (val: Folder) => void;
 };
 
 export const MyDropdown = ({data, selected, onSelect}: DropdownProps) => {
@@ -58,8 +58,8 @@ export const MyDropdown = ({data, selected, onSelect}: DropdownProps) => {
   const toggleDropdown = () => {
     open ? closeDropdown() : onOpenDropdown();
   };
-  const onItemPress = (item: Data): void => {
-    setSelected(item.title);
+  const onItemPress = (item: Folder): void => {
+    setSelected(item.id);
     onSelect && onSelect(item);
     closeDropdown();
   };
@@ -111,7 +111,7 @@ export const MyDropdown = ({data, selected, onSelect}: DropdownProps) => {
                 data.map(item => (
                   <Pressable onPress={() => onItemPress(item)}>
                     <View className="p-2 bg-white ">
-                      <Text key={item.title}>{item.title}</Text>
+                      <Text key={item.name}>{item.name}</Text>
                     </View>
                   </Pressable>
                 ))}
